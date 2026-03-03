@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# VE Agent Tools Update Script
+# CC Starter Update Script
 # Pulls latest CLAUDE.md profile and skills into a project without
 # overwriting project-specific settings (Project Info).
 
@@ -29,11 +29,11 @@ print_info() {
 TARGET="${1:-}"
 if [ -z "$TARGET" ]; then
     echo ""
-    echo -e "${BOLD}VE Agent Tools Update${RESET}"
+    echo -e "${BOLD}CC Starter Update${RESET}"
     echo ""
     echo "Usage: ./update.sh <path-to-your-project>"
     echo ""
-    echo "  Updates CLAUDE.md and skills to the latest versions from ve-agent-tools"
+    echo "  Updates CLAUDE.md and skills to the latest versions from cc-starter"
     echo "  while preserving your project-specific settings (Project Info, git mode)."
     echo ""
     echo "  Run setup.sh first if you haven't already."
@@ -49,9 +49,9 @@ fi
 
 # --- Read config from setup ---
 
-CONFIG="$TARGET/.claude/.ve-config"
+CONFIG="$TARGET/.claude/.cc-config"
 if [ ! -f "$CONFIG" ]; then
-    echo "Error: No .claude/.ve-config found in '$TARGET'."
+    echo "Error: No .claude/.cc-config found in '$TARGET'."
     echo "  Run setup.sh first to configure this project."
     exit 1
 fi
@@ -59,7 +59,7 @@ fi
 source "$CONFIG"
 
 if [ -z "${role:-}" ]; then
-    echo "Error: .ve-config is missing the role field."
+    echo "Error: .cc-config is missing the role field."
     exit 1
 fi
 
@@ -70,10 +70,10 @@ if [ ! -f "$PROFILE_SRC" ]; then
 fi
 
 echo ""
-echo -e "${BOLD}VE Agent Tools Update${RESET}"
+echo -e "${BOLD}CC Starter Update${RESET}"
 echo -e "Target: ${CYAN}$TARGET${RESET}"
 echo -e "Role:   ${CYAN}$role${RESET}"
-echo -e "Source: ${CYAN}$SCRIPT_DIR${RESET} (ve-agent-tools)"
+echo -e "Source: ${CYAN}$SCRIPT_DIR${RESET} (cc-starter)"
 
 # --- Step 1: Update CLAUDE.md (preserve preferences) ---
 
@@ -130,27 +130,6 @@ for SKILL in spec-driven-dev.md iterative-commits.md pr-workflow.md skill-creati
         print_success "$SKILL"
     fi
 done
-
-# Update CampaignManager skills if previously opted in (files already exist)
-CM_SKILLS=(campaignmanager-api.md campaignmanager-endpoints.md campaignmanager-models.md)
-CM_EXISTS=false
-for SKILL in "${CM_SKILLS[@]}"; do
-    if [ -f "$TARGET/.claude/skills/$SKILL" ]; then
-        CM_EXISTS=true
-        break
-    fi
-done
-
-if [ "$CM_EXISTS" = true ]; then
-    for SKILL in "${CM_SKILLS[@]}"; do
-        if [ -f "$SCRIPT_DIR/skills/$SKILL" ]; then
-            cp "$SCRIPT_DIR/skills/$SKILL" "$TARGET/.claude/skills/"
-            print_success "$SKILL"
-        fi
-    done
-else
-    print_skip "CampaignManager skills (not in use)"
-fi
 
 # Update React/Zustand skills if previously opted in
 REACT_SKILLS=(component-creation.md dom-utility-testing.md store-first-feature.md zustand-store-testing.md)

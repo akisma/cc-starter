@@ -19,7 +19,7 @@ npm install
 git init && git add -A && git commit -m "initial scaffold"
 ```
 
-Then run `setup.sh` from the ve-agent-tools repo pointing at your new project. Once CLAUDE.md is in place, your agent can help you with everything from there.
+Then run `setup.sh` from the cc-starter repo pointing at your new project. Once CLAUDE.md is in place, your agent can help you with everything from there.
 
 ## How Your Agent Handles Git (So You Don't Have To)
 

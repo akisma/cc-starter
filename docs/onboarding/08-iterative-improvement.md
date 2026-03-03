@@ -24,7 +24,7 @@ The signal is repetition. When you find yourself doing any of the following for 
 
 ## Creating a Skill
 
-A skill is a focused markdown file that teaches the agent one thing well. It lives in the `ve-agent-tools/skills/` directory and follows this structure:
+A skill is a focused markdown file that teaches the agent one thing well. It lives in the `cc-starter/skills/` directory and follows this structure:
 
 - **Purpose:** One sentence explaining when this skill applies
 - **Instructions:** Clear, specific steps the agent should follow
@@ -33,13 +33,13 @@ A skill is a focused markdown file that teaches the agent one thing well. It liv
 
 Keep skills focused. A skill that tries to cover "all of our coding standards" is too broad. A skill that covers "how we name and structure API error responses" is the right size.
 
-## Contributing Skills to ve-agent-tools
+## Contributing Skills to cc-starter
 
 When you create a skill that works well for you, contribute it to the shared repository so the whole team benefits.
 
 1. **Test it locally.** Use the skill across at least 2-3 sessions to verify it consistently produces good results.
 2. **Write it for a general audience.** Remove references to your specific task and frame the instructions so any team member's agent can follow them.
-3. **Add it to the skills directory.** Place it in `ve-agent-tools/skills/`.
+3. **Add it to the skills directory.** Place it in `cc-starter/skills/`.
 4. **Submit a PR.** Include a brief description of the pattern the skill addresses and why it is useful.
 5. **Let the team review.** Others may have refinements or edge cases to add.
 
@@ -67,5 +67,5 @@ The team that actively contributes skills improves at a rate that the team that 
 - [ ] Repeated patterns are codified as skills in the skills directory
 - [ ] Skills are tested locally before being contributed to the shared repo
 - [ ] You submit skills via PR so the team can review and refine them
-- [ ] You pull the latest skills from ve-agent-tools before starting work
+- [ ] You pull the latest skills from cc-starter before starting work
 - [ ] The skill library is treated as a living resource, updated as conventions evolve

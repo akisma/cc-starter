@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# VE Agent Tools Setup Script
+# CC Starter Setup Script
 # Configures Claude Code for a target project with the right profile, skills, and MCPs.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,7 +35,7 @@ print_warn() {
 TARGET="${1:-}"
 if [ -z "$TARGET" ]; then
     echo ""
-    echo -e "${BOLD}VE Agent Tools Setup${RESET}"
+    echo -e "${BOLD}CC Starter Setup${RESET}"
     echo ""
     echo "Usage: ./setup.sh <path-to-existing-project>"
     echo ""
@@ -44,7 +44,7 @@ if [ -z "$TARGET" ]; then
     echo "  configuration (CLAUDE.md, skills, MCP servers) to that project."
     echo ""
     echo "Example:"
-    echo "  ./setup.sh ~/Documents/code/velocity-engine/code/my-project"
+    echo "  ./setup.sh ~/Documents/code/my-project"
     exit 1
 fi
 
@@ -75,9 +75,9 @@ if [ ! -d "$TARGET/.git" ] && [ ! -f "$TARGET/package.json" ] && [ ! -f "$TARGET
 fi
 
 # Warn if already set up
-if [ -f "$TARGET/CLAUDE.md" ] && [ -f "$TARGET/.claude/.ve-config" ]; then
+if [ -f "$TARGET/CLAUDE.md" ] && [ -f "$TARGET/.claude/.cc-config" ]; then
     echo ""
-    echo -e "${YELLOW}Warning:${RESET} This project already has a CLAUDE.md and .ve-config."
+    echo -e "${YELLOW}Warning:${RESET} This project already has a CLAUDE.md and .cc-config."
     echo "  Running setup again will overwrite your CLAUDE.md (including Project Info)."
     echo ""
     echo "  To update to the latest profile and skills without losing your settings:"
@@ -91,7 +91,7 @@ if [ -f "$TARGET/CLAUDE.md" ] && [ -f "$TARGET/.claude/.ve-config" ]; then
 fi
 
 echo ""
-echo -e "${BOLD}VE Agent Tools Setup${RESET}"
+echo -e "${BOLD}CC Starter Setup${RESET}"
 echo -e "Target: ${CYAN}$TARGET${RESET}"
 
 # --- Step 1: Choose role ---
@@ -118,8 +118,8 @@ print_success "Role: $ROLE"
 # --- Save config for update.sh ---
 
 mkdir -p "$TARGET/.claude"
-echo "role=$ROLE" > "$TARGET/.claude/.ve-config"
-print_success "Saved config to .claude/.ve-config"
+echo "role=$ROLE" > "$TARGET/.claude/.cc-config"
+print_success "Saved config to .claude/.cc-config"
 
 # --- Step 2: Copy CLAUDE.md ---
 
@@ -181,18 +181,6 @@ for SKILL in spec-driven-dev.md iterative-commits.md pr-workflow.md skill-creati
         print_success "Copied $SKILL"
     fi
 done
-
-# Ask about CampaignManager skills
-echo ""
-read -rp "  Does this project use the CampaignManager API? (y/n): " CM_CHOICE
-if [ "$CM_CHOICE" = "y" ] || [ "$CM_CHOICE" = "Y" ]; then
-    for SKILL in campaignmanager-api.md campaignmanager-endpoints.md campaignmanager-models.md; do
-        if [ -f "$SCRIPT_DIR/skills/$SKILL" ]; then
-            cp "$SCRIPT_DIR/skills/$SKILL" "$TARGET/.claude/skills/"
-            print_success "Copied $SKILL"
-        fi
-    done
-fi
 
 # Ask about frontend skills
 read -rp "  Does this project use React/Zustand? (y/n): " REACT_CHOICE

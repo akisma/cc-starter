@@ -222,7 +222,7 @@ When you find yourself doing something 3+ times, or establishing a pattern worth
 - [ ] [Verification item]
 ```
 
-3. If the skill is useful to others, contribute it to the shared `ve-agent-tools` repository
+3. If the skill is useful to others, contribute it to the shared `cc-starter` repository
 
 ---
 

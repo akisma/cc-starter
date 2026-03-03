@@ -22,7 +22,7 @@ The CLAUDE.md file is not a wishlist. It is a set of concrete instructions that 
 
 Skills are packaged instructions that teach your agent how to perform specific tasks. Rather than explaining your deployment process every time, you encode it once as a skill and the agent can invoke it on demand.
 
-- Skills live in the `ve-agent-tools/skills/` directory
+- Skills live in the `cc-starter/skills/` directory
 - Each skill is a focused markdown file with clear instructions
 - Skills are loaded on demand, not all at once -- this keeps context lean
 - Examples: commit formatting, PR review checklist, test generation patterns, code review standards
@@ -85,7 +85,7 @@ For full installation docs, see https://docs.anthropic.com/en/docs/claude-code.
 
 ## Getting Set Up
 
-Once the prerequisites are installed, run the setup script from the ve-agent-tools repo, pointing it at your project:
+Once the prerequisites are installed, run the setup script from the cc-starter repo, pointing it at your project:
 
 ```bash
 ./setup.sh ~/path/to/your/project

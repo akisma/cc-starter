@@ -1,6 +1,6 @@
-# VE Agent Tools
+# CC Starter
 
-Shared AI agent configuration, skills, and onboarding materials for Velocity Engine teams.
+Shared AI agent configuration, skills, and onboarding materials for teams using Claude Code.
 
 This repo provides everything your team needs to work effectively with Claude Code: ready-to-use configurations for engineers and product/design folks, shared skills, MCP server setup, and presentation-ready documentation.
 
@@ -44,7 +44,7 @@ Then run the setup script below pointing at that directory.
 Point it at an existing project — the directory where your code already lives (with a `package.json`, `pom.xml`, `.git/`, etc.):
 
 ```bash
-./setup.sh ~/Documents/code/velocity-engine/code/my-project
+./setup.sh ~/Documents/code/my-project
 ```
 
 The script will:
@@ -76,10 +76,10 @@ Open your project in Claude Code. The AI assistant will automatically read your 
 
 ## Updating Your Project
 
-When we push improvements to profiles or skills, pull the latest ve-agent-tools and run:
+When improvements are pushed to profiles or skills, pull the latest and run:
 
 ```bash
-./update.sh ~/Documents/code/velocity-engine/code/my-project
+./update.sh ~/Documents/code/my-project
 ```
 
 This updates your `CLAUDE.md` and skills to the latest versions while preserving your Project Info. MCP servers and personal settings (`CLAUDE.local.md`) are not touched. **Do this regularly to stay current.**
@@ -131,13 +131,6 @@ Skills are detailed guides that help AI agents follow consistent patterns. Locat
 | `component-creation.md` | React component patterns |
 | `dom-utility-testing.md` | Testing DOM utilities |
 | `store-first-feature.md` | TDD: state first, then UI |
-
-### CampaignManager Skills
-| Skill | Purpose |
-|-------|---------|
-| `campaignmanager-endpoints.md` | API endpoints reference |
-| `campaignmanager-api.md` | Frontend API patterns |
-| `campaignmanager-models.md` | Data models |
 
 ---
 
@@ -195,14 +188,13 @@ See `skills/skill-creation.md` for the full guide.
 ## Repo Structure
 
 ```
-ve-agent-tools/
+cc-starter/
   profiles/
     engineer/CLAUDE.md           # Engineer configuration
     product-design/CLAUDE.md     # Product/Design configuration
   skills/                        # Shared skill documents
   docs/
     onboarding/                  # Meeting presentation materials
-    BACKEND_TEAM_DISCUSSION.md   # Backend integration notes
   setup.sh                       # Initial project setup
   update.sh                      # Pull latest profile + skills into a project
 ```

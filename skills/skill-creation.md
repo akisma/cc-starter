@@ -67,7 +67,7 @@ Create a file in `.claude/skills/[skill-name].md`:
 ## Where Skills Live
 
 - **Project-level:** `.claude/skills/` in your project - auto-loaded by Claude Code
-- **Shared:** `ve-agent-tools/skills/` - the team's shared skill library
+- **Shared:** `cc-starter/skills/` - the team's shared skill library
 
 ## Contributing to the Shared Repo
 
@@ -75,9 +75,9 @@ When you create a skill that others would benefit from:
 
 1. Verify it works well in your project first
 2. Generalize it - remove project-specific references
-3. Copy it to `ve-agent-tools/skills/`
-4. Update the skills table in `ve-agent-tools/README.md`
-5. Create a PR to the ve-agent-tools repo
+3. Copy it to `cc-starter/skills/`
+4. Update the skills table in `cc-starter/README.md`
+5. Create a PR to the cc-starter repo
 
 **Before contributing, ask:**
 - Is this general enough for other projects?
